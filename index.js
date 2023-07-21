@@ -5,6 +5,7 @@ let bodyParser=require('body-parser');
 const morgan=require('morgan');
 const dotenv=require('dotenv');
 const staffRouter=require("./routers/staffRouter")
+const PORT=process.env.PORT||3000;
 
 const app=express();
 const uri="mongodb+srv://hoangchien11522:0368670025@cluster0.hqd4zon.mongodb.net/test?retryWrites=true&w=majority"
@@ -25,6 +26,6 @@ app.use(morgan("common"));
 
 app.use("/v1/staff",staffRouter)
 
-app.listen(3000,()=>{
+app.listen(PORT,()=>{
     console.log("Server is running ...");
 })
