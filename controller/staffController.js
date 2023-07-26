@@ -1,4 +1,4 @@
-const {Staff} =require("../model/model")
+const {Staff} =require("../model/staff")
 
 const staffController={
     addStaff:async(req,res)=>{
@@ -7,7 +7,7 @@ const staffController={
             const saveStaff=await newStaff.save();
             res.status(200).json(saveStaff)
         } catch (error) {
-            
+            res.status(500).json(error)
         }
 
     },

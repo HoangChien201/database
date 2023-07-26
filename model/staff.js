@@ -5,25 +5,37 @@ const staffSchema=new mongoose.Schema({
         type:String,
         require:true
     },
-    idStaff:{
+    idCard:{
         type:String,
         require:true
-    },
-    idCard:{
-        type:String
+
     },
     phone:{
-        type:String
+        type:String,
+        require:true
+
     },
     address:{
-        type:String
+        type:String,
+        require:true
+
     },
     position:{
-        type:String
+        type:String,
+        require:true
+
     },
     password:{
-        type:String
-    }
+        type:String,
+        require:true
+
+    },
+    bills:[
+        {
+            type:mongoose.Schema.Types.ObjectId,
+            ref:"Bill"
+        }
+    ]
 
 })
 

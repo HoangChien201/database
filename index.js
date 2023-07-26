@@ -4,7 +4,15 @@ const mongoose=require('mongoose')
 let bodyParser=require('body-parser');
 const morgan=require('morgan');
 const dotenv=require('dotenv');
-const staffRouter=require("./routers/staffRouter")
+
+//router
+const staffRouter=require("./routers/staffRouter");
+const billRouter=require("./routers/billRouter");
+const tableRouter=require("./routers/tableRouter");
+const typeOfDishRouter=require('./routers/typeOfDishRouter');
+const dishesRouter=require('./routers/dishesRouter')
+const detailedInvoiceRouter=require('./routers/detailedInvoiceRouter')
+
 const PORT=process.env.PORT||3000;
 
 const app=express();
@@ -24,7 +32,14 @@ app.use(bodyParser.json({"limit":"50mb"}))
 app.use(cors());
 app.use(morgan("common"));
 
-app.use("/v1/staff",staffRouter)
+app.use("/staff",staffRouter);
+app.use("/bill",billRouter);
+app.use('/table',tableRouter);
+app.use('/typeOfDish',typeOfDishRouter);
+app.use('/dishes',dishesRouter);
+app.use('/detailedInvoice',detailedInvoiceRouter);
+
+
 
 app.listen(PORT,()=>{
     console.log("Server is running ...");
