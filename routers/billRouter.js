@@ -3,6 +3,8 @@ const router=require('express').Router();
 
 router.post("/",billController.addBill);
 router.get("/",billController.getAllBill);
+router.get("/bill-unpaid",billController.getABillStatusFalse);
+
 router.get("/:id",billController.getABill);
 router.put("/:id",billController.updateBill);
 router.delete("/:id",billController.deleteBill);

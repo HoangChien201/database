@@ -30,6 +30,15 @@ const billController = {
 
         }
     },
+    getABillStatusFalse: async (req, res) => {
+        try {
+            const bill = await Bill.find({status:false})
+            res.status(200).json(bill)
+        } catch (error) {
+            res.status(500).json(error)
+
+        }
+    },
     getABill: async (req, res) => {
         try {
             const bill = await Bill.findById(req.params.id).populate("detailedInvoice");
