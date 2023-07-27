@@ -32,7 +32,7 @@ const billController = {
     },
     getABillStatusFalse: async (req, res) => {
         try {
-            const bill = await Bill.find({status:false})
+            const bill = await Bill.find({status:false,table:req.params.id})
             res.status(200).json(bill)
         } catch (error) {
             res.status(500).json(error)
