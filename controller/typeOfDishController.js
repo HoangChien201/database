@@ -5,7 +5,7 @@ const typeOfDishController = {
     //get
     getAllTypeOfDish: async (req, res) => {
         try {
-            const allType = await TypeOfDish.find();
+            const allType = await TypeOfDish.find().populate('dishes');
             res.status(200).json(allType);
         } catch (error) {
             res.status(500).json(error)
