@@ -2,7 +2,8 @@ const {detailedInvoiceController}=require("../controller/detailedInvoiceControll
 
 const router=require('express').Router();
 
-router.get('/',detailedInvoiceController.getAll);
+router.get('/unprocessed',detailedInvoiceController.getUnprocessed);
+router.get('/:id',detailedInvoiceController.getAllOfBill);
 router.post('/',detailedInvoiceController.addDetailedInvoice);
 router.put('/:id',detailedInvoiceController.updateDetailedInvoice);
 router.delete('/:id',detailedInvoiceController.deleteDetailedInvoice);
