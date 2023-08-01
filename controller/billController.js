@@ -33,7 +33,7 @@ const billController = {
     },
     getABillStatusFalse: async (req, res) => {
         try {
-            const bill = await Bill.find({status:false,table:req.params.id}).populate("detailedInvoice").populate('table').populate('staff');
+            const bill = await Bill.findOne({status:false,table:req.params.id}).populate("detailedInvoice").populate('table').populate('staff');
             const dishes= await Dishes.find();
 
             res.status(200).json({bill,dishes})
