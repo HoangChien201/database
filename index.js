@@ -38,7 +38,6 @@ app.use('/table',tableRouter);
 app.use('/typeOfDish',typeOfDishRouter);
 app.use('/dishes',dishesRouter);
 app.use('/detailedInvoice',detailedInvoiceRouter);
-app.use('/data',dataRouter);
 
 
 
