@@ -1,10 +1,12 @@
 const { DetailedInvoice } = require('../model/detailedInvoice');
 const { Bill } = require('../model/bill');
+const { Dishes } = require('../model/dishes');
 
 const detailedInvoiceController = {
     getUnprocessed:async(req,res)=>{
         const unprocessedDetail=await DetailedInvoice.find({status:false});
-        res.status(200).json(unprocessedDetail);
+        const dishes= await Dishes.find();
+        res.status(200).json({unprocessedDetail,dishes});
 
     },
     getAllOfBill: async (req, res) => {
