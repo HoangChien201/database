@@ -4,7 +4,7 @@ const { Table } = require('../model/table');
 const tableController = {
     getAllTable: async (req, res) => {
         try {
-            const allTable = await Table.find().populate('bills');
+            const allTable = await Table.find();
             res.status(200).json(allTable);
         } catch (error) {
             res.status(500).json(error)

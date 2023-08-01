@@ -13,7 +13,7 @@ const staffController={
     },
     getAllStaff:async (req,res)=>{
         try {
-            const allStaff=await Staff.find().populate('bills');
+            const allStaff=await Staff.find();
             res.status(200).json(allStaff)
         } catch (error) {
             res.status(500).json(error)
