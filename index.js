@@ -11,8 +11,8 @@ const billRouter=require("./routers/billRouter");
 const tableRouter=require("./routers/tableRouter");
 const typeOfDishRouter=require('./routers/typeOfDishRouter');
 const dishesRouter=require('./routers/dishesRouter')
-const detailedInvoiceRouter=require('./routers/detailedInvoiceRouter')
-
+const detailedInvoiceRouter=require('./routers/detailedInvoiceRouter');
+const dataRouter=require('./routers/dataRouter')
 const PORT=process.env.PORT||3000;
 
 const app=express();
@@ -38,6 +38,8 @@ app.use('/table',tableRouter);
 app.use('/typeOfDish',typeOfDishRouter);
 app.use('/dishes',dishesRouter);
 app.use('/detailedInvoice',detailedInvoiceRouter);
+app.use('/data',dataRouter);
+
 
 
 

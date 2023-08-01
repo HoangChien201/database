@@ -23,7 +23,7 @@ const billController = {
 
     getAllBill: async (req, res) => {
         try {
-            const allBill = await Bill.find();
+            const allBill = await Bill.find().populate('table').populate('staff');
             res.status(200).json(allBill)
         } catch (error) {
             res.status(500).json(error)
@@ -41,7 +41,7 @@ const billController = {
     },
     getABill: async (req, res) => {
         try {
-            const bill = await Bill.findById(req.params.id).populate("detailedInvoice");
+            const bill = await Bill.findById(req.params.id).populate("detailedInvoice").populate('table').populate('staff');
 
             res.status(200).json(bill)
         } catch (error) {

@@ -19,6 +19,23 @@ const typeOfDishController = {
             res.status(500).json(error)
         }
     },
+    getAllDishesInType:async (req, res) => {
+        try {
+            const data={}
+            const typeOfDish=await TypeOfDish.find()
+            const dishes= await Dishes.find()
+            typeOfDish.forEach((type)=>{
+                data[type.name]=dishes.filter((dish)=>{
+                    return dish.typeOfDish.toString()===type._id.toString();
+                })
+            })
+            res.status(200).json(data);
+
+        } catch (error) {
+            res.status(500).json(error);
+        }
+    }
+    ,
     //add
     addTypeOfDish: async (req, res) => {
         try {
