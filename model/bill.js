@@ -21,6 +21,9 @@ const billShema = new mongoose.Schema({
             ref: "DetailedInvoice"
         }
     ],
+    totalBill:{
+        type:Number,
+    },
     table: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "Table",
