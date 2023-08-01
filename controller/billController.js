@@ -1,4 +1,5 @@
-const { Bill } = require('../model/bill')
+const { Bill } = require('../model/bill');
+const { Dishes } = require('../model/dishes');
 const { Staff } = require('../model/staff');
 const { Table } = require('../model/table');
 
@@ -32,8 +33,10 @@ const billController = {
     },
     getABillStatusFalse: async (req, res) => {
         try {
-            const bill = await Bill.find({status:false,table:req.params.id})
-            res.status(200).json(bill)
+            const bill = await Bill.find({status:false,table:req.params.id}).populate("detailedInvoice").populate('table').populate('staff');
+            const dishes= await Dishes.find();
+
+            res.status(200).json({bill,dishes})
         } catch (error) {
             res.status(500).json(error)
 
