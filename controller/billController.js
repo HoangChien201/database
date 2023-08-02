@@ -62,6 +62,16 @@ const billController = {
             res.status(500).json(error);
         }
     },
+    updateDetailInvoideOfBill: async (req, res) => {
+        try {
+            const bill=await Bill.findById(req.params.id);
+            const detailedInvoiceOld=bill.detailedInvoice;
+            await Bill.updateOne({_id:req.params.id},{$set:{detailedInvoice:[...detailedInvoiceOld,...req.body["detailedInvoice"]]}})
+            res.status(200).json("update successfully")
+        } catch (error) {
+            res.status(500).json(error);
+        }
+    },
 
     deleteBill: async (req, res) => {
         try {

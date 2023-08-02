@@ -7,6 +7,8 @@ router.get("/bill-unpaid/:id",billController.getABillStatusFalse);
 
 router.get("/:id",billController.getABill);
 router.put("/:id",billController.updateBill);
+router.put("/detailInvoiceOfBill/:id",billController.updateDetailInvoideOfBill);
+
 router.delete("/:id",billController.deleteBill);
 
 
