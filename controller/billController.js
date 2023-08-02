@@ -44,7 +44,7 @@ const billController = {
     },
     getABill: async (req, res) => {
         try {
-            const bill = await Bill.findById(req.params.id).populate("detailedInvoice").populate('table').populate('staff');
+            const bill = await Bill.findById(req.params.id);
 
             res.status(200).json(bill)
         } catch (error) {
@@ -76,6 +76,10 @@ const billController = {
     deleteBill: async (req, res) => {
         try {
             await Staff.updateMany(
+                { bills: req.params.id },
+                { $pull: {bills: req.params.id} }
+            );
+            await Table.updateMany(
                 { bills: req.params.id },
                 { $pull: {bills: req.params.id} }
             );
