@@ -11,6 +11,15 @@ const typeOfDishController = {
             res.status(500).json(error)
         }
     },
+    getType:async(req,res)=>{
+        try {
+            const allType = await TypeOfDish.find();
+            res.status(200).json(allType);
+        } catch (error) {
+            res.status(500).json(error)
+        }
+    }
+    ,
     getATypeOfDish: async (req, res) => {
         try {
             const type = await TypeOfDish.findById(req.params.id).populate('dishes');
