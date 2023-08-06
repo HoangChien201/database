@@ -61,6 +61,7 @@ const billController = {
         } catch (error) {
             res.status(500).json(error);
         }
+        
     },
     updateDetailInvoideOfBill: async (req, res) => {
         try {
