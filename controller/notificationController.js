@@ -2,10 +2,12 @@
 const admin = require("firebase-admin");
 // Replace FIREBASE_ADMIN_SDK_KEY with the path to your Firebase Admin SDK service account key JSON file
 const serviceAccount = require("../notification/notifition1-firebase-adminsdk-3oz7y-5146952fae.json");
+const e = require("express");
 
 const notificationController = {
     pushNotification: async (req, res) => {
 
+        const {title,content}={...req.body}
         // Initialize Firebase Admin SDK
         admin.initializeApp({
             credential: admin.credential.cert(serviceAccount),
@@ -24,19 +26,13 @@ const notificationController = {
             try {
                 // Send the message using Firebase Admin SDK
                 const response = await admin.messaging().send(message);
-                console.log("Successfully sent message:", response);
+                res.status(200).json("OK")
             } catch (error) {
-                console.error("Error sending message:", error);
+                res.status(500).json(error)
             }
         }
 
-        // Usage example
-        const registrationToken = "DEVICE_REGISTRATION_TOKEN"; // Replace with the registration token of the device you want to send the message to
-        const messageTitle = "Hello";
-        const messageBody = "This is a test message from Node.js.";
-
-        sendFCMMessage(registrationToken, messageTitle, messageBody);
-
+        sendFCMMessage(req.params.token, title, content);
     }
 }
 

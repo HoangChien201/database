@@ -8,10 +8,13 @@ const billController = {
         try {
             const newBill = new Bill(req.body);
             const saveBill = await newBill.save();
-            if (req.body.staff  || req.body.staff) {
+            if (req.body.staff) {
                 const staff = Staff.findById(req.body.staff);
                 await staff.updateOne({ $push: { bills: saveBill._id } });
 
+                
+            }
+            if(req.body.table){
                 const table = Table.findById(req.body.table);
                 await table.updateOne({ $push: { bills: saveBill._id } });
             }

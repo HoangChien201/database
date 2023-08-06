@@ -13,6 +13,8 @@ const typeOfDishRouter=require('./routers/typeOfDishRouter');
 const dishesRouter=require('./routers/dishesRouter')
 const detailedInvoiceRouter=require('./routers/detailedInvoiceRouter');
 const notificationRouter=require('./routers/notificationRouter');
+const tokenRouter=require('./routers/tokenRouter');
+
 
 const PORT=process.env.PORT||3000;
 
@@ -40,6 +42,7 @@ app.use('/typeOfDish',typeOfDishRouter);
 app.use('/dishes',dishesRouter);
 app.use('/detailedInvoice',detailedInvoiceRouter);
 app.use('/notification',notificationRouter);
+app.use('/token',tokenRouter);
 
 
 
