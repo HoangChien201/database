@@ -2,7 +2,7 @@ const mongoose=require('mongoose');
 
 const detailedInvoiceShema=new mongoose.Schema({
     status:{
-        type:Boolean,
+        type:String,
         require:true
     },
     dish:{
