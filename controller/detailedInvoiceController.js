@@ -5,7 +5,7 @@ const { Dishes } = require('../model/dishes');
 const detailedInvoiceController = {
     getUnprocessed:async(req,res)=>{
         const receivedDetail=await DetailedInvoice.find({status:"received"});
-        const doneDetail=await DetailedInvoice.find({status:"done"});
+        const doneDetail=await DetailedInvoice.find({status:"booked"});
         const unprocessedDetail=[...receivedDetail,...doneDetail]
         const dishes= await Dishes.find();
         res.status(200).json({unprocessedDetail,dishes});
