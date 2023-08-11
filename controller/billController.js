@@ -1,4 +1,4 @@
-const { GetMonth,Format }=require('../format/date');
+const { GetMonth,FormatDate,FormatMonth }=require('../format/date');
 
 const { Bill } = require('../model/bill');
 const { Dishes } = require('../model/dishes');
@@ -98,12 +98,12 @@ const billController = {
 
     getBillOfMonth:async(req,res)=>{
         try {
-            const dateSearch=Format(req.params.date)
+            const dateSearch=FormatMonth(req.params.date)
             const bills=Bill.find();
             const billsSearch=(await bills).filter(bill=>{
                 const billDate=bill.billDate;
-                const billDateFormat=Format(billDate.substring(billDate.indexOf(" ")+1))
-                if(dateSearch.includes(GetMonth(new Date(billDateFormat)))===true){
+                const billDateFormat=FormatDate(billDate.substring(billDate.indexOf(" ")+1))
+                if(billDateFormat.includes(dateSearch)===true){
                     return bill;
                 }
             })
@@ -114,11 +114,11 @@ const billController = {
     },
     getBillOfDay:async(req,res)=>{
         try {
-            const dateSearch=Format(req.params.date)
+            const dateSearch=FormatDate(req.params.date)
             const bills=Bill.find();
             const billsSearch=(await bills).filter(bill=>{
                 const billDate=bill.billDate;
-                const billDateFormat=Format(billDate.substring(billDate.indexOf(" ")+1))
+                const billDateFormat=FormatDate(billDate.substring(billDate.indexOf(" ")+1))
                 if(dateSearch.includes(billDateFormat)===true){
                     return bill;
                 }
