@@ -4,6 +4,10 @@ const router=require('express').Router();
 router.post("/",billController.addBill);
 router.get("/",billController.getAllBill);
 router.get("/bill-unpaid/:id",billController.getABillStatusFalse);
+router.get("/billOfMonth/:date",billController.getBillOfMonth);
+router.get("/billOfDay/:date",billController.getBillOfDay);
+
+
 
 router.get("/:id",billController.getABill);
 router.put("/:id",billController.updateBill);

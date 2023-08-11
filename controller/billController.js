@@ -1,3 +1,5 @@
+const { GetMonth,Format }=require('../format/date');
+
 const { Bill } = require('../model/bill');
 const { Dishes } = require('../model/dishes');
 const { Staff } = require('../model/staff');
@@ -91,6 +93,39 @@ const billController = {
             res.status(200).json("delete successfully")
         } catch (error) {
             res.status(500).json(error);
+        }
+    },
+
+    getBillOfMonth:async(req,res)=>{
+        try {
+            const dateSearch=Format(req.params.date)
+            const bills=Bill.find();
+            const billsSearch=(await bills).filter(bill=>{
+                const billDate=bill.billDate;
+                const billDateFormat=Format(billDate.substring(billDate.indexOf(" ")+1))
+                if(dateSearch.includes(GetMonth(new Date(billDateFormat)))===true){
+                    return bill;
+                }
+            })
+            res.status(200).json(billsSearch)
+        } catch (error) {
+            res.status(500).json(error)
+        }
+    },
+    getBillOfDay:async(req,res)=>{
+        try {
+            const dateSearch=Format(req.params.date)
+            const bills=Bill.find();
+            const billsSearch=(await bills).filter(bill=>{
+                const billDate=bill.billDate;
+                const billDateFormat=Format(billDate.substring(billDate.indexOf(" ")+1))
+                if(dateSearch.includes(billDateFormat)===true){
+                    return bill;
+                }
+            })
+            res.status(200).json(...billsSearch)
+        } catch (error) {
+            res.status(500).json(error)
         }
     }
 }
