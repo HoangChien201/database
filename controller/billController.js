@@ -123,7 +123,7 @@ const billController = {
                     return bill;
                 }
             })
-            res.status(200).json(...billsSearch)
+            res.status(200).json(billsSearch)
         } catch (error) {
             res.status(500).json(error)
         }
