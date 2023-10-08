@@ -2,40 +2,51 @@ const mongoose = require("mongoose");
 
 const newsShema = new mongoose.Schema({
     idAuthor:{
-        typeof:String
+        type:String,
+        require: true
     },
     category:{
-        typeof:String,
+        type:String,
     },
     title:{
-        typeof:String
+        type:String,
+        require: true
     },
     imageUrl:{
-        typeof:String
+        type:String,
+        require: true
     },
     namePage:{
-        typeof:String
+        type:String,
+        require: true
     },
     iconPage:{
-        typeof:String
+        type:String,
+        require: true
     },
     time:{
-        typeof:String
+        type:String,
+        require: true
     },
     content:{
-        typeof:String
+        type:String,
+        require: true
     },
     like:{
-        typeof:Boolean
+        type:Boolean,
+        require: true
     },
     quantityLike:{
-        typeof:String
+        type:String,
+        require: true
     },
     quantityComment:{
-        typeof:String
+        type:String,
+        require: true
     },
     favorite:{
-        typeof:Boolean
+        type:Boolean,
+        require: true
     }
 })
 const News = mongoose.model("News", newsShema);
