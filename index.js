@@ -43,8 +43,7 @@ app.use('/typeOfDish',typeOfDishRouter);
 app.use('/dishes',dishesRouter);
 app.use('/detailedInvoice',detailedInvoiceRouter);
 app.use('/notification',notificationRouter);
-app.use('/token',tokenRouter);
-app.use('/news',newsRouter)
+app.use('/article',newsRouter)
 
 
 

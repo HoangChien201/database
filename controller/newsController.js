@@ -1,11 +1,10 @@
-const { News } = require('../model/news');
+const { News } = require("../model/news");
 
 const newsController = {
     getAllNews: async (req, res) => {
         try {
-            const listNews=News.find();
+            const listNews= await News.find();
             res.status(200).json(listNews)
-
         } catch (error) {
             res.status(500).json(error);
         }

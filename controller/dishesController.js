@@ -1,4 +1,5 @@
 const { Dishes } = require('../model/dishes');
+const { News } = require('../model/news');
 const { TypeOfDish } = require('../model/typeOfDish');
 
 const dishesController = {
@@ -11,6 +12,16 @@ const dishesController = {
             res.status(500).json(error);
         }
     },
+    getAllArticle:async (req, res) => {
+        try {
+            const allDishes = await News.find();
+            res.status(200).json(allDishes);
+
+        } catch (error) {
+            res.status(500).json(error);
+        }
+    },
+
     addDish: async (req, res) => {
         try {
             const newDish = new Dishes(req.body);

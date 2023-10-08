@@ -1,4 +1,4 @@
-const newsController=require('../controller/newsController');
+const newsController=require('../controller/newsController')
 const router=require('express').Router();
 
 router.get("/",newsController.getAllNews);
