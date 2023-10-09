@@ -73,11 +73,9 @@ const newsController = {
                 const result=listArticle.filter((article)=>{
                     return removeVietnameseTones(article.title).includes(key)
                 })
-                if(result.length > 0){
-                    res.status(200).json(result);
-                }else{
-                    res.status(200).json("Không tìm thấy kết quả nào");
-                }
+                
+                res.status(200).json(result);
+                
                 
             }else{
                 const listNews= await News.find();
